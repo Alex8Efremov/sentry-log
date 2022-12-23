@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  sentry_log:
+    container_name: ${SERVICE}
+    image: ${SERVICE}
+    environment:
+      DSN: ${DSN}
+      ATTEMPTS: ${ATTEMPTS}
