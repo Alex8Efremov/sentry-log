@@ -1,23 +1,33 @@
 version: "3.7"
 services:
   sentry_log:
-    container_name: ${SERVICE}
+    container_name: ${COMPOSE_PROJECT_NAME:-}${SERVICE}
     image: ${SERVICE}
     environment:
       DSN: ${DSN}
       ATTEMPTS: ${ATTEMPTS}
       MESSAGE: ${MESSAGE}
+    networks:
+      - sentry
   sentry_log_2:
-    container_name: ${SERVICE}_2
+    container_name: ${COMPOSE_PROJECT_NAME:-}${SERVICE}_2
     image: ${SERVICE}
     environment:
       DSN: ${DSN_2}
       ATTEMPTS: ${ATTEMPTS}
       MESSAGE: ${MESSAGE}sentry_log_2
+    networks:
+      - sentry
   sentry_log_3:
-    container_name: ${SERVICE}_3
+    container_name: ${COMPOSE_PROJECT_NAME:-}${SERVICE}_3
     image: ${SERVICE}
     environment:
       DSN: ${DSN_3}
       ATTEMPTS: ${ATTEMPTS}
       MESSAGE: ${MESSAGE}sentry_log_3
+    networks:
+      - sentry
+networks:
+  sentry:
+    # external: true
+    name: ${COMPOSE_PROJECT_NAME:-}sentry

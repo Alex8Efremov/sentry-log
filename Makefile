@@ -3,7 +3,9 @@ include .env
 SHELL=/bin/bash
 APP=app
 export SERVICE=sentry_log
+export COMPOSE_PROJECT_NAME=20
 .DEFAULT_GOAL := up
+
 
 init: down
 	@go mod init mod && go mod tidy
@@ -26,9 +28,9 @@ docker-build:
 	docker build --no-cache -t ${SERVICE} .
 
 docker-run: docker-down
-	docker compose up -d
+	@for i in $(shell seq 1 ${COMPOSE_PROJECT_NAME});do COMPOSE_PROJECT_NAME=$$i docker compose up -d ;done
 
 docker-down:
-	docker compose down
+	@for i in $(shell seq 1 ${COMPOSE_PROJECT_NAME});do COMPOSE_PROJECT_NAME=$$i docker compose down;done
 
 d-all: docker-build docker-down docker-run

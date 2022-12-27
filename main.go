@@ -18,6 +18,12 @@ var (
 
 func main() {
 	var test int = 0
+	// type HTTPTransport struct {
+	// 	// Size of the transport buffer. Defaults to 30.
+	// 	BufferSize int
+	// 	// HTTP Client request timeout. Defaults to 30 seconds.
+	// 	Timeout time.Duration
+	// }
 	sentrySyncTransport := sentry.NewHTTPSyncTransport()
 	sentrySyncTransport.Timeout = time.Second * 1
 
@@ -49,6 +55,7 @@ func main() {
 			break
 		}
 		test++
+
 		fmt.Println(test)
 
 	}
