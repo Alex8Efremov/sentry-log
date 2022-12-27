@@ -6,3 +6,18 @@ services:
     environment:
       DSN: ${DSN}
       ATTEMPTS: ${ATTEMPTS}
+      MESSAGE: ${MESSAGE}
+  sentry_log_2:
+    container_name: ${SERVICE}_2
+    image: ${SERVICE}
+    environment:
+      DSN: ${DSN_2}
+      ATTEMPTS: ${ATTEMPTS}
+      MESSAGE: ${MESSAGE}sentry_log_2
+  sentry_log_3:
+    container_name: ${SERVICE}_3
+    image: ${SERVICE}
+    environment:
+      DSN: ${DSN_3}
+      ATTEMPTS: ${ATTEMPTS}
+      MESSAGE: ${MESSAGE}sentry_log_3

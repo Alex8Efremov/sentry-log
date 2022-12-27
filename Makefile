@@ -23,7 +23,7 @@ down:
 all: init build up
 
 docker-build:
-	docker build --network=host --no-cache -t ${SERVICE} .
+	docker build --no-cache -t ${SERVICE} .
 
 docker-run: docker-down
 	docker compose up -d
